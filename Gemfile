@@ -31,6 +31,14 @@ gem "clearance"
 
 gem "figaro"
 
+gem "omniauth"
+
+gem "omniauth-google-oauth2"
+
+gem 'faker'
+
+gem 'kaminari'
+
 # Use ActiveStorage variant
 # gem 'mini_magick', '~> 4.8'
 

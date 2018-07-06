@@ -1,0 +1,28 @@
+<h1>Listings</h1>
+ 
+<%= link_to 'New listing', new_listing_path %>
+
+<div>
+
+  <% @listing.each do |listing| %>
+  
+      <p>Name: <%= listing.name %></p>
+      <p>City: <%= listing.city %></p>
+      <p>Property type: <%= listing.property_type %></p>
+      <p>Number of guest: <%= listing.number_of_guest %></p>
+      <p>Price: <%= listing.price %></p>
+
+      <%= link_to 'Show', listing_path(listing) %> |
+      <%= link_to 'Edit', edit_listing_path(listing) %> |
+      <%= link_to 'Delete', listing_path(listing),
+              method: :delete,
+              data: { confirm: 'Are you sure?' } %>
+
+      <hr>
+
+  <% end %>
+
+</div>
+
+<%= paginate @listing %>
+

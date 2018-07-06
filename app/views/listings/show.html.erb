@@ -1,0 +1,57 @@
+<p>
+  <strong>Name:</strong>
+  <%= @listing.name %>
+</p>
+ 
+<p>
+  <strong>Country:</strong>
+  <%= @listing.country %>
+</p>
+
+<p>
+  <strong>City:</strong>
+  <%= @listing.city %>
+</p>
+
+<p>
+  <strong>Area:</strong>
+  <%= @listing.area %>
+</p>
+
+<p>
+  <strong>Street:</strong>
+  <%= @listing.street %>
+</p>
+
+<p>
+  <strong>Property type:</strong>
+  <%= @listing.property_type %>
+</p>
+ 
+<p>
+  <strong>Number of guest:</strong>
+  <%= @listing.number_of_guest %>
+</p>
+
+<p>
+  <strong>Number of rooms:</strong>
+  <%= @listing.number_of_rooms %>
+</p> 
+
+<p>
+  <strong>Number of bathrooms:</strong>
+  <%= @listing.number_of_bathrooms %>
+</p>
+
+<p>
+  <strong>Price:</strong>
+  <%= @listing.price %>
+</p>
+
+
+<%= link_to 'Edit', edit_listing_path(@listing) %> | 
+<%= link_to 'Back', listings_path %>
+
+
+
+
