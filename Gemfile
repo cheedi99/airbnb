@@ -43,6 +43,8 @@ gem 'carrierwave', '~> 1.0'
 
 gem 'braintree'
 
+gem 'sidekiq'
+
 # Use ActiveStorage variant
 # gem 'mini_magick', '~> 4.8'
 

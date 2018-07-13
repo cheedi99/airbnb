@@ -1,7 +1,7 @@
 class ReservationMailer < ApplicationMailer
 	default from: 'notifications@example.com'
  
-  def booking_email(user, listing_id)
+  def booking_email(user,listing_id)
     @user = user
     @url  = 'http://example.com/login'
 
