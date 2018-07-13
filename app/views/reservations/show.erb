@@ -1,0 +1,27 @@
+<p>
+ <strong><%= @reservation.listing.name %></strong>
+</p>
+
+<p>
+  <strong>Start date:</strong>
+  <%= @reservation.start_date %>
+</p>
+
+<p>
+  <strong>End date:</strong>
+  <%= @reservation.end_date %>
+</p>
+
+<p>
+  <strong>Total price:</strong>
+  <%= @reservation.total_price %>
+</p>
+
+<p>
+  <strong>Number of days:</strong>
+  <%= @reservation.number_of_days %>
+</p>
+
+<!-- <div data-turbolinks="false"> -->
+<%= link_to "Proceed for payment", braintree_new_path, data: { turbolinks: false } %>
+<!-- </div> -->

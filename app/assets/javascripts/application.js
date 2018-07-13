@@ -10,7 +10,32 @@
 // Read Sprockets README (https://github.com/rails/sprockets#sprockets-directives) for details
 // about supported directives.
 //
+//= require turbolinks
 //= require rails-ujs
 //= require activestorage
-//= require turbolinks
 //= require_tree .
+
+
+$(function() {
+  $('input[name="reservation[start_date]"]').daterangepicker({
+    singleDatePicker: true,
+    showDropdowns: true,
+    locale: {
+    	format: "YYYY/MM/DD"
+    },
+    minYear: 2016,
+    maxYear: 2022
+  });
+
+
+  $('input[name="reservation[end_date]"]').daterangepicker({
+    singleDatePicker: true,
+    showDropdowns: true,
+    locale: {
+    	format: "YYYY/MM/DD"
+    },
+    minYear: 2016,
+    maxYear: 2022
+  });
+})
+

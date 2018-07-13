@@ -1,0 +1,12 @@
+<%= form_with scope: :reservation, url: listing_reservations_path, local: true do |form| %>
+
+<input type="text" name="reservation[start_date]" value="" >
+
+<input type="text" name="reservation[end_date]" value="" >
+
+
+  <p>
+    <%= form.submit %>
+  </p>
+
+  <% end %>

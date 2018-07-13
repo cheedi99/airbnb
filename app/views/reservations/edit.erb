@@ -1,0 +1,14 @@
+<h1>Edit reservations</h1>
+
+<%= form_with scope: :reservation, url: listing_reservation_path(params[:listing_id],@reservation), method: :patch, local: true do |form| %>
+
+<input type="text" name="reservation[start_date]" value="" >
+
+<input type="text" name="reservation[end_date]" value="" >
+
+
+  <p>
+    <%= form.submit %>
+  </p>
+
+  <% end %>
