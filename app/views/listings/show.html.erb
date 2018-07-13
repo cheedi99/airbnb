@@ -1,3 +1,9 @@
+
+<br />
+<% @listing.avatars.each do |img| %>
+  <%= image_tag img.url %>
+<% end %>
+
 <p>
   <strong>Name:</strong>
   <%= @listing.name %>

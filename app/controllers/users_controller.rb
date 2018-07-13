@@ -1,4 +1,12 @@
 class UsersController < Clearance::UsersController
+  def show
+    @user = User.find(params[:id])
+  end
+
+  def edit
+    @user = User.find(params[:id])
+  end
+
 	def create
     @user = user_from_params
 
@@ -7,6 +15,20 @@ class UsersController < Clearance::UsersController
       redirect_back_or url_after_create
     else
       render template: "users/new"
+    end
+  end
+
+  def update
+    @user = User.find(params[:id])
+    if current_user.role == "customer" && @user.id != current_user.id
+      flash[:notice] = "This profile does not belong to you"
+      render "edit"
+    else
+      if @user.update(user_params)
+        redirect_to "/users/#{params[:id]}"
+      else 
+        render "edit"
+      end
     end
   end
 
@@ -24,4 +46,9 @@ class UsersController < Clearance::UsersController
     end
   end
 
-end	
+  private
+  def user_params
+    params.fetch(:user).permit(:first_name, :last_name,:email, :password, :avatar)
+  end	
+
+end

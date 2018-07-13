@@ -2,22 +2,39 @@
 <html>
   <head>
     <title>Airbnb</title>
-    <%= csrf_meta_tags %>
-    <%= csp_meta_tag %>
+      <%= csrf_meta_tags %>
+      <%= csp_meta_tag %>
 
-    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
-    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+      <script type="text/javascript" src="https://cdn.jsdelivr.net/jquery/latest/jquery.min.js"></script>
+      <script type="text/javascript" src="https://cdn.jsdelivr.net/momentjs/latest/moment.min.js"></script>
+      <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.min.js"></script>
+      <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.css" />
+
+      <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+      <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
 
   <body>
     <% if signed_in? %>
-  <%= current_user.email %>
-  <%= button_to "Sign out", sign_out_path, method: :delete %>
-<% else %>
-  <%= link_to "Sign in", sign_in_path %>
-  <%= link_to "Sign in with Google", "/auth/google_oauth2" %>
-<% end %>
+      <%= current_user.email %><p>Role: <%= current_user.role %></p>
+      <%= button_to "Sign out", sign_out_path, method: :delete %>
+    <% else %>
+      <%= link_to "Sign in", sign_in_path %>
+      <%= link_to "Sign in with Google", "/auth/google_oauth2" %>
+    <% end %>
 
+    <br>
+    <%= link_to "Home", root_path %>
+    <%= link_to "Profile", profile_path(current_user) %>
+    <%= link_to "Listings", listings_path %>
+    <%= link_to "Reservations", reservations_path %>
+
+
+    <% flash.each do |key, value| %>
+     <div class="alert alert-<%= key %>"><%= value %></div>
+   <% end %>
+
+    
     <%= yield %>
   </body>
 </html>

@@ -4,7 +4,10 @@
 
 <div>
 
-  <% @listing.each do |listing| %>
+  <% @listing.order(updated_at: :desc).each do |listing| %>  
+      <% if listing.avatars != [] %>
+            <%= image_tag listing.avatars[0].url %>
+      <% end%>
   
       <p>Name: <%= listing.name %></p>
       <p>City: <%= listing.city %></p>
@@ -16,7 +19,9 @@
       <%= link_to 'Edit', edit_listing_path(listing) %> |
       <%= link_to 'Delete', listing_path(listing),
               method: :delete,
-              data: { confirm: 'Are you sure?' } %>
+              data: { confirm: 'Are you sure?' } %> |
+      <%= link_to 'Make reservation', new_listing_reservation_path(listing), data:
+       { turbolinks: false } %> |        
 
       <hr>
 
@@ -25,4 +30,6 @@
 </div>
 
 <%= paginate @listing %>
+
+
 

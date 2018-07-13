@@ -1,0 +1,5 @@
+<%= link_to "Edit profile", "/users/#{current_user.id}/edit" %>
+<%= image_tag @user.avatar_url.to_s, :class => "profile" %>
+<br><%= @user.email %><br>
+<%= @user.first_name + " " + @user.last_name %>
+

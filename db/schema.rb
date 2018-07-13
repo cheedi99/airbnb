@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_07_06_144001) do
+ActiveRecord::Schema.define(version: 2018_07_11_061220) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -39,7 +39,21 @@ ActiveRecord::Schema.define(version: 2018_07_06_144001) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.bigint "user_id"
+    t.json "avatars"
     t.index ["user_id"], name: "index_listings_on_user_id"
+  end
+
+  create_table "reservations", force: :cascade do |t|
+    t.bigint "user_id"
+    t.bigint "listing_id"
+    t.date "start_date"
+    t.date "end_date"
+    t.integer "total_price"
+    t.integer "number_of_days"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["listing_id"], name: "index_reservations_on_listing_id"
+    t.index ["user_id"], name: "index_reservations_on_user_id"
   end
 
   create_table "users", force: :cascade do |t|
@@ -51,10 +65,15 @@ ActiveRecord::Schema.define(version: 2018_07_06_144001) do
     t.string "encrypted_password", limit: 128, null: false
     t.string "confirmation_token", limit: 128
     t.string "remember_token", limit: 128, null: false
+    t.integer "role", default: 0
+    t.string "avatar"
+    t.json "avatars"
     t.index ["email"], name: "index_users_on_email"
     t.index ["remember_token"], name: "index_users_on_remember_token"
   end
 
   add_foreign_key "authentications", "users"
   add_foreign_key "listings", "users"
+  add_foreign_key "reservations", "listings"
+  add_foreign_key "reservations", "users"
 end
