@@ -1,0 +1,35 @@
+<h1>Listings</h1>
+ 
+<%= link_to 'New listing', new_listing_path %>
+
+<div>
+
+  <% @listing.order(updated_at: :desc).each do |listing| %>  
+      <% if listing.avatars != [] %>
+            <%= image_tag listing.avatars[0].url %>
+      <% end%>
+  
+      <p>Name: <%= listing.name %></p>
+      <p>City: <%= listing.city %></p>
+      <p>Property type: <%= listing.property_type %></p>
+      <p>Number of guest: <%= listing.number_of_guest %></p>
+      <p>Price: <%= listing.price %></p>
+
+      <%= link_to 'Show', listing_path(listing) %> |
+      <%= link_to 'Edit', edit_listing_path(listing) %> |
+      <%= link_to 'Delete', listing_path(listing),
+              method: :delete,
+              data: { confirm: 'Are you sure?' } %> |
+      <%= link_to 'Make reservation', new_listing_reservation_path(listing), data:
+       { turbolinks: false } %> |        
+
+      <hr>
+
+  <% end %>
+
+</div>
+
+<%= paginate @listing %>
+
+
+

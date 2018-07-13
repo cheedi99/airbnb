@@ -1,0 +1,31 @@
+<h1>Reservation List</h1>
+ 
+
+<%= link_to 'Listings', listings_path %>
+
+<div>
+
+  <% @reservation.order(updated_at: :desc).each do |reservation| %>
+      <% if reservation.listing.avatars != [] %>
+            <%= image_tag reservation.listing.avatars[0].url %>
+      <% end%>
+      
+      <p><strong><%= reservation.listing.name %></strong></p>
+      <p>Start date: <%= reservation.start_date %></p>
+      <p>End date: <%= reservation.end_date %></p>
+      <p>Total price: <%= reservation.total_price %></p>
+      <p>Number of days: <%= reservation.number_of_days %></p>
+
+      <%= link_to 'Show', listing_reservation_path(reservation.listing.id, reservation) %> | 
+      <%= link_to 'Edit', edit_listing_reservation_path(reservation.listing.id, reservation), data: { turbolinks: false } %> |
+      <%= link_to 'Delete', listing_reservation_path(reservation.listing.id, reservation), 
+              method: :delete,
+              data: { confirm: 'Are you sure?' } %>
+
+      <hr>
+
+  <% end %>
+
+</div>
+
+<%= paginate @reservation %>
