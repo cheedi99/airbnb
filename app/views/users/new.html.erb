@@ -1,15 +1,15 @@
-<div id="clearance" class="sign-up">
+<div id="clearance" class="sign-up my-4 text-center">
   <h2><%= t(".title") %></h2>
 
-  <%= form_with @user, :html => {:multipart => true} do |form| %>
+  <%= form_for @user, :id => "sign_up" do |form| %>
     <%= render partial: '/users/form', object: form %>
 
-    <div class="submit-field">
-      <%= form.submit %>
+    <div class="submit-field my-2">
+      <%= form.submit :class => "btn btn-primary"%>
     </div>
 
-    <div class="other-links">
-      <%= link_to t(".sign_in"), sign_in_path %>
+    <div class="other-links my-2">
+      <%= link_to t(".sign_in"), sign_in_path, :class => "btn btn-primary" %>
     </div>
   <% end %>
 </div>

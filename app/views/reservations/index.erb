@@ -1,31 +1,38 @@
-<h1>Reservation List</h1>
- 
+<div class= "container my-3">
+  <h1>Reservation List</h1><br>
 
-<%= link_to 'Listings', listings_path %>
+  <%= paginate @reservation %><br>
+  
+  <div class="row" >
+      <% @reservation.order(updated_at: :desc).each do |reservation| %>
+        <div class="col-4 mb-4">
+          <div class="card" style="width: 18rem;">
+            <% if reservation.listing.avatars != [] %>
+            <img class="card-img-top" src="<%= reservation.listing.avatars[0] %>" alt="Card image cap"> 
+            <% end %>
 
-<div>
+            <ul class="list-group list-group-flush">
+              <li class="list-group-item card-text"><strong><%= reservation.listing.name %></strong></li>
+              <li class="list-group-item card-text">Start date: <%= reservation.start_date %></li>
+              <li class="list-group-item card-text">End date: <%= reservation.end_date %></li>
+              <li class="list-group-item card-text">Number of days: <%= reservation.number_of_days %></li>
+              <li class="list-group-item card-text">Total price: <%= reservation.total_price %></li>
+            </ul>
 
-  <% @reservation.order(updated_at: :desc).each do |reservation| %>
-      <% if reservation.listing.avatars != [] %>
-            <%= image_tag reservation.listing.avatars[0].url %>
-      <% end%>
-      
-      <p><strong><%= reservation.listing.name %></strong></p>
-      <p>Start date: <%= reservation.start_date %></p>
-      <p>End date: <%= reservation.end_date %></p>
-      <p>Total price: <%= reservation.total_price %></p>
-      <p>Number of days: <%= reservation.number_of_days %></p>
-
-      <%= link_to 'Show', listing_reservation_path(reservation.listing.id, reservation) %> | 
-      <%= link_to 'Edit', edit_listing_reservation_path(reservation.listing.id, reservation), data: { turbolinks: false } %> |
-      <%= link_to 'Delete', listing_reservation_path(reservation.listing.id, reservation), 
+            <div class="card-body">
+              <a href="#" class="card-link"><%= link_to 'Show', listing_reservation_path(reservation.listing.id, reservation) %></a> | 
+              <a href="#" class="card-link"><%= link_to 'Edit', edit_listing_reservation_path(reservation.listing.id, reservation), data: { turbolinks: false } %></a> | 
+              <a href="#" class="card-link"><%= link_to 'Delete', listing_reservation_path(reservation.listing.id, reservation), 
               method: :delete,
-              data: { confirm: 'Are you sure?' } %>
-
-      <hr>
-
-  <% end %>
-
+              data: { confirm: 'Are you sure?' } %></a> |
+              <a href="#" class="card-link"><%= link_to "Make Payment", braintree_new_path, data: { turbolinks: false } %></a>
+            </div>
+          </div>
+        </div>
+      <% end %>
+  </div>
 </div>
 
-<%= paginate @reservation %>
+
+
+

@@ -1,14 +1,18 @@
-<h1>Edit reservations</h1>
+<div class= "container my-3 text-center">
+<h1>Update your reservation</h1>
 
 <%= form_with scope: :reservation, url: listing_reservation_path(params[:listing_id],@reservation), method: :patch, local: true do |form| %>
 
-<input type="text" name="reservation[start_date]" value="" >
+Start date : <input type="text" name="reservation[start_date]" value="">
 
-<input type="text" name="reservation[end_date]" value="" >
+End date : <input type="text" name="reservation[end_date]" value=""><br>
 
 
-  <p>
-    <%= form.submit %>
+  <br><p>
+    <%= form.submit :class => "btn btn-primary" %>
   </p>
 
+  <%= link_to 'Back', reservations_path, :class => "btn btn-primary" %>
+
   <% end %>
+</div>

@@ -1,20 +1,39 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Airbnb</title>
+    <title>Monkeybnb</title>
       <%= csrf_meta_tags %>
       <%= csp_meta_tag %>
 
-      <script type="text/javascript" src="https://cdn.jsdelivr.net/jquery/latest/jquery.min.js"></script>
-      <script type="text/javascript" src="https://cdn.jsdelivr.net/momentjs/latest/moment.min.js"></script>
-      <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.min.js"></script>
-      <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.css" />
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.2/css/bootstrap.min.css" integrity="sha384-Smlep5jCw/wG7hdkwQ/Z5nLIefveQRIY9nfy6xoR1uRYBtpZgI6339F5dgvm/e9B" crossorigin="anonymous">
+
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.2/js/bootstrap.min.js" integrity="sha384-o+RDsa0aLu++PJvFqy8fFScvbHFLtbvScb8AjopnFD+iEQ7wo/CG0xlczd+2O/em" crossorigin="anonymous"></script>
+
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/jquery/latest/jquery.min.js"></script>
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/momentjs/latest/moment.min.js"></script>
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.css" />
+
 
       <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
       <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+    
   </head>
 
   <body>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+      <div id="header" class="container-fluid">
+
+      <br>
+    <%= link_to "Home", root_path %>
+    <% if signed_in? %>
+      <%= link_to "Profile", profile_path(current_user) %>
+    <% end %>
+    <%= link_to "Listings", listings_path %>
+    <%= link_to "Reservations", reservations_path %>  
+
     <% if signed_in? %>
       <%= current_user.email %><p>Role: <%= current_user.role %></p>
       <%= button_to "Sign out", sign_out_path, method: :delete %>
@@ -23,18 +42,17 @@
       <%= link_to "Sign in with Google", "/auth/google_oauth2" %>
     <% end %>
 
-    <br>
-    <%= link_to "Home", root_path %>
-    <%= link_to "Profile", profile_path(current_user) %>
-    <%= link_to "Listings", listings_path %>
-    <%= link_to "Reservations", reservations_path %>
-
-
+    
     <% flash.each do |key, value| %>
      <div class="alert alert-<%= key %>"><%= value %></div>
    <% end %>
 
+    </nav>
+
     
     <%= yield %>
+
+    
+
   </body>
 </html>

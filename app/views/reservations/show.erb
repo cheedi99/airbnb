@@ -1,3 +1,4 @@
+<div class= "container my-3 text-center">
 <p>
  <strong><%= @reservation.listing.name %></strong>
 </p>
@@ -22,6 +23,8 @@
   <%= @reservation.number_of_days %>
 </p>
 
+<%= link_to "Back", reservations_path, :class => "btn btn-primary" %>
 <!-- <div data-turbolinks="false"> -->
-<%= link_to "Proceed for payment", braintree_new_path, data: { turbolinks: false } %>
+<%= link_to "Proceed for payment", braintree_new_path, data: { turbolinks: false }, :class => "btn btn-primary" %>
 <!-- </div> -->
+</div>
