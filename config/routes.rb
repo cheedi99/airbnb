@@ -26,9 +26,11 @@ Rails.application.routes.draw do
 
   resources :listings, controller:"listings" do
     resources :reservations, except: [:index]
-
-   end 
+  end 
    resources :reservations, only:[:index]
+
+   get '/search' => "listings#search", as: "search"
+
 
 end
 

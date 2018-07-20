@@ -1,4 +1,4 @@
-
+<div class= "container my-3 text-center">
 <br />
 <% @listing.avatars.each do |img| %>
   <%= image_tag img.url %>
@@ -55,8 +55,9 @@
 </p>
 
 
-<%= link_to 'Edit', edit_listing_path(@listing) %> | 
-<%= link_to 'Back', listings_path %>
+<%= link_to 'Edit', edit_listing_path(@listing), :class => "btn btn-primary" %>
+<%= link_to 'Back', listings_path, :class => "btn btn-primary" %>
+</div>
 
 
 

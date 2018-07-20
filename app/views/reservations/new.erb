@@ -1,12 +1,14 @@
+<div class= "container my-3 text-center">
 <%= form_with scope: :reservation, url: listing_reservations_path, local: true do |form| %>
 
-<input type="text" name="reservation[start_date]" value="" >
+<p>Start date:</p><input type="text" name="reservation[start_date]" value="">
 
-<input type="text" name="reservation[end_date]" value="" >
+<p>End date:</p><input class="mb-2" type="text" name="reservation[end_date]" value="">
 
+<div class="my-4">
+<%= form.submit :class => "btn btn-primary" %>
+<%= link_to 'Back', listings_path, :class => "btn btn-primary" %>
+</div>
 
-  <p>
-    <%= form.submit %>
-  </p>
-
-  <% end %>
+<% end %>
+</div>

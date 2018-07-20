@@ -17,6 +17,28 @@
 
 
 $(function() {
+
+  $('#city').on('keypress', function(e){
+   $.ajax({
+     url: 'search',
+     method: 'GET',
+     data: $(this).serialize(),
+     dataType: 'json',
+     success: function(data){
+       let checkCity = document.getElementById("checkCity");
+       // let city = document.getElementById(“city”);
+       checkCity.innerHTML = "";
+
+       data.forEach(function(listing){
+         const option = document.createElement("option");
+
+         option.value = listing.city;
+         checkCity.append(option);
+       })
+     }
+   })
+ });
+
   $('input[name="reservation[start_date]"]').daterangepicker({
     singleDatePicker: true,
     showDropdowns: true,

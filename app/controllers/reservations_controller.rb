@@ -23,6 +23,8 @@ class ReservationsController < ApplicationController
 		@reservation.listing_id = params[:listing_id]
 
 		if @reservation.save
+			ReservationJob.perform_later(current_user,@reservation.listing_id)
+			#ReservationMailer.booking_email(current_user,@reservation.listing_id)deliver.now
  			redirect_to listing_reservation_path(params[:listing_id], @reservation)
 		else	
 			flash[:notice] = "this reservation has been booked"
