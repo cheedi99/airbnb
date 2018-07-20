@@ -3,7 +3,7 @@ class ReservationMailer < ApplicationMailer
  
   def booking_email(user,listing_id)
     @user = user
-    @url  = 'http://example.com/login'
+    @url  = 'http://localhost:3000/braintree/new'
 
     mail(to: @user.email, subject: 'Welcome to My Awesome Site')
   end

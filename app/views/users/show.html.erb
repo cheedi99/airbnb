@@ -1,5 +1,8 @@
-<%= link_to "Edit profile", "/users/#{current_user.id}/edit" %>
-<%= image_tag @user.avatar_url.to_s, :class => "profile" %>
-<br><%= @user.email %><br>
-<%= @user.first_name + " " + @user.last_name %>
+<div class= "container my=4 text-center">
+	<%= image_tag @user.avatar_url.to_s, :class => "profile mx-auto" %>
+	<%= @user.email %><br>
+	<%= @user.first_name + " " + @user.last_name %><br>
+
+	<%= link_to "Edit profile", "/users/#{current_user.id}/edit", :class => "btn btn-primary" %>	
+</div>
 

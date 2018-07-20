@@ -1,3 +1,4 @@
+<div class= "container my-3 text-center">
 <h1>Edit listing</h1>
  
 <%= form_with scope: :listing, url: listing_path(@listing), method: :patch, local: true do |form| %>
@@ -70,10 +71,12 @@
 	<%= form.file_field :avatars, multiple: true %>
   </p>
  
-  <p>
-    <%= form.submit %>
-  </p>
+  <div class="my-4">
+    <%= form.submit :class => "btn btn-primary" %>
+    <%= link_to 'Back', listings_path, :class => "btn btn-primary" %>
+  </div>   
  
 <% end %>
+</div>
 
-<%= link_to 'Back', listings_path %>
+

@@ -1,3 +1,4 @@
+<div class= "container my-3 text-center">
 <%= form_with scope: :listing, url: listings_path(@listing), method: :post, local: true do |form| %>
  
   <% if @listing.errors.any? %>
@@ -69,7 +70,8 @@
   </p>
  
   <p>
-    <%= form.submit %>
+    <%= form.submit :class => "btn btn-primary" %>
   </p>
  
 <% end %>
+</div>

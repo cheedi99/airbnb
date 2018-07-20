@@ -1,24 +1,24 @@
-<br><%= @user.email %>
-
-
-
-<%= form_with scope: :user, url: update_path(@user), method: :patch do |form| %>
-<br><div>
-		<%= form.label :first_name %>
+<div class= "container my-3 text-center">
+	<%= @user.email %>
+	<%= form_with scope: :user, url: update_path(@user), method: :patch do |form| %>
+	<div class= "my-4">
+		<%= form.label :first_name %> :
 		<%= form.text_field :first_name %>
 	</div>
-<br><div>
-		<%= form.label :last_name %>
+	<div class= "my-4">
+		<%= form.label :last_name %> :
 		<%= form.text_field :last_name %>
 	</div>
-<br><div>
-		<%= form.label :email %>
+	<div class= "my-4">
+		<%= form.label :email %> :
 		<%= form.text_field :email %>
 	</div>
-<br><div>
+	<div class= "my-4">
 		<%= form.file_field :avatar %>
 	</div>
-<br><div>
-		<%= form.submit %>
+	<div class= "my-4">
+		<%= form.submit :class => "btn btn-primary" %>
+		<%= link_to 'Back', profile_path, :class => "btn btn-primary" %>
 	</div>
-<% end %>
+	<% end %>
+</div>
